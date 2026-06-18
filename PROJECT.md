@@ -147,23 +147,14 @@ round-trip verificado).
       sonido on/off, segundos de aviso.
 - [x] i18n en 3 idiomas.
 - [x] Build de producción sin errores; verificado en navegador.
+- [x] **Sistema de 6 temas** (`src/lib/themes.ts` + `global.css`): royal/crimson/emerald
+      (oscuros) e ivory/platinum/champagne (claros). Selector con swatches en Ajustes.
+- [x] **Fondos animados** (`src/components/backgrounds/`): shader, fireflies, snow, starfield,
+      aurora (toma colores del tema), bokeh, none, imagen propia. Despacho en `AppBackground`.
 
 ---
 
 ## 6. Hoja de ruta
-
-### Próximo (en curso de definición)
-1. **Sistema de temas ampliado** — reemplazar claro/oscuro por **≥3 temas oscuros y ≥3 claros**
-   (registro de temas con paletas nombradas; selector en Ajustes con preview).
-2. **Fondos animados** — además del shader actual y la imagen propia:
-   - **Fireflies** (luciérnagas) — código base provisto por el usuario (CSS/SCSS).
-   - 3 fondos adicionales a proponer/implementar (candidatos: Nieve, Cielo estrellado,
-     Aurora/gradiente vivo, Bokeh dorado). Ver §7.
-   - Arquitectura: `settings.wallpaper` pasa de `'shader' | imageURL` a un set de IDs
-     (`'shader' | 'fireflies' | 'snow' | 'starfield' | 'aurora' | 'none' | imageDataURL`),
-     y `AppBackground` despacha al componente correspondiente. Cada fondo debe ser performante
-     (pensado para correr horas en una pantalla de salón) y, cuando aplique, tomar colores
-     del tema activo.
 
 ### Fase 2
 3. **Autenticación Google (OAuth) + Supabase** — guardar torneos en el perfil del usuario.
@@ -187,12 +178,13 @@ round-trip verificado).
 
 | ID | Nombre | Técnica | Tema ideal | Estado |
 |---|---|---|---|---|
-| `shader` | Agua (cáusticas doradas) | WebGL | ambos | ✅ implementado |
-| `fireflies` | Luciérnagas | CSS keyframes | oscuro | base provista |
-| `snow` | Nieve | Canvas 2D | claro/oscuro | propuesto |
-| `starfield` | Cielo estrellado (+ estrellas fugaces) | Canvas 2D | oscuro | propuesto |
-| `aurora` | Aurora / gradiente vivo | CSS (blur + keyframes) | ambos (toma color del tema) | propuesto |
-| `none` | Color sólido del tema | — | ambos | propuesto |
+| `shader` | Agua (cáusticas doradas) | WebGL | ambos | ✅ |
+| `fireflies` | Luciérnagas | CSS keyframes (gen. en JS) | oscuro | ✅ |
+| `snow` | Nieve | Canvas 2D | claro/oscuro | ✅ |
+| `starfield` | Cielo estrellado (+ estrellas fugaces) | Canvas 2D | oscuro | ✅ |
+| `aurora` | Aurora / gradiente vivo | CSS (blur + keyframes) | ambos (toma color del tema) | ✅ |
+| `bokeh` | Bokeh dorado (orbes) | CSS | ambos | ✅ |
+| `none` | Color sólido del tema | — | ambos | ✅ |
 
 (El componente de cada fondo se monta/desmonta y debe pausar su loop al desmontarse.)
 
