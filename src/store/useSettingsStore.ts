@@ -10,12 +10,18 @@ interface SettingsState {
   wallpaper: Wallpaper;
   soundEnabled: boolean;
   warnSeconds: number;
+  showTimerCards: boolean;
+  footerText: string;
   setTheme: (t: ThemeName) => void;
   setLanguage: (l: LanguageCode) => void;
   setWallpaper: (w: Wallpaper) => void;
   setSoundEnabled: (v: boolean) => void;
   setWarnSeconds: (n: number) => void;
+  setShowTimerCards: (v: boolean) => void;
+  setFooterText: (t: string) => void;
 }
+
+export const DEFAULT_FOOTER = 'PokerHouse · Tournament Director';
 
 export const useSettingsStore = create<SettingsState>()(
   persist(
@@ -25,6 +31,8 @@ export const useSettingsStore = create<SettingsState>()(
       wallpaper: 'shader',
       soundEnabled: true,
       warnSeconds: 10,
+      showTimerCards: false,
+      footerText: DEFAULT_FOOTER,
       setTheme: (theme) => set({ theme }),
       setLanguage: (language) => {
         setLanguage(language);
@@ -33,6 +41,8 @@ export const useSettingsStore = create<SettingsState>()(
       setWallpaper: (wallpaper) => set({ wallpaper }),
       setSoundEnabled: (soundEnabled) => set({ soundEnabled }),
       setWarnSeconds: (warnSeconds) => set({ warnSeconds: Math.max(0, warnSeconds) }),
+      setShowTimerCards: (showTimerCards) => set({ showTimerCards }),
+      setFooterText: (footerText) => set({ footerText }),
     }),
     {
       name: 'td-settings',

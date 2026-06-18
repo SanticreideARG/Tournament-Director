@@ -18,8 +18,9 @@ export default function SettingsScreen() {
   const { t } = useTranslation();
   const fileRef = useRef<HTMLInputElement>(null);
   const {
-    theme, language, wallpaper, soundEnabled, warnSeconds,
+    theme, language, wallpaper, soundEnabled, warnSeconds, showTimerCards, footerText,
     setTheme, setLanguage, setWallpaper, setSoundEnabled, setWarnSeconds,
+    setShowTimerCards, setFooterText,
   } = useSettingsStore();
 
   const darkThemes = THEMES.filter((th) => th.mode === 'dark');
@@ -94,6 +95,32 @@ export default function SettingsScreen() {
                 </button>
               ))}
             </div>
+          </section>
+
+          {/* Pantalla */}
+          <section className="panel set-section set-span">
+            <h2>{t('settings.display')}</h2>
+            <div className="set-theme-group">
+              <span className="set-group-label">{t('settings.timerCards')}</span>
+              <div className="set-options">
+                <button className={`chip ${showTimerCards ? 'on' : ''}`} onClick={() => setShowTimerCards(true)}>
+                  {t('settings.soundOn')}
+                </button>
+                <button className={`chip ${!showTimerCards ? 'on' : ''}`} onClick={() => setShowTimerCards(false)}>
+                  {t('settings.soundOff')}
+                </button>
+              </div>
+            </div>
+            <label className="set-field set-field-wide">
+              {t('settings.footer')}
+              <input
+                type="text"
+                value={footerText}
+                maxLength={80}
+                placeholder={t('settings.footerPlaceholder')}
+                onChange={(e) => setFooterText(e.target.value)}
+              />
+            </label>
           </section>
 
           {/* Sonido */}

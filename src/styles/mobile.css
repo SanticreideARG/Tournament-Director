@@ -1,0 +1,106 @@
+/* ============================================================
+   LAYOUT FLUIDO (mobile). Se activa cuando ScaledStage agrega
+   la clase .fluid (viewport <= 820px). Todo va scopeado a
+   .stage-screen.fluid para no afectar el modo escalado de desktop.
+   ============================================================ */
+
+.stage-screen.fluid {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  transform: none !important;
+  left: 0 !important;
+  top: 0 !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Botón "Volver" común a varias pantallas */
+.stage-screen.fluid .back-btn { top: 14px; left: 14px; padding: 8px 16px; font-size: 14px; }
+
+/* ── MENÚ ── */
+.stage-screen.fluid .menu-brand { position: static; transform: none; margin: 40px auto 4px; }
+.stage-screen.fluid .brand-name { font-size: 44px !important; }
+.stage-screen.fluid .suit-flank { font-size: 22px; }
+.stage-screen.fluid .brand-tagline { font-size: 12px; letter-spacing: 0.3em; }
+.stage-screen.fluid .menu-list {
+  position: static;
+  transform: none;
+  width: 92%;
+  max-width: 560px;
+  margin: 26px auto 48px;
+  gap: 16px;
+}
+.stage-screen.fluid .menu-item { padding: 18px 20px; gap: 16px; border-radius: 14px; }
+.stage-screen.fluid .menu-item:hover { transform: none; }
+.stage-screen.fluid .menu-icon { width: 50px; height: 50px; border-radius: 12px; }
+.stage-screen.fluid .menu-icon svg { width: 24px; height: 24px; }
+.stage-screen.fluid .menu-title { font-size: 22px; margin-bottom: 4px; }
+.stage-screen.fluid .menu-sub { font-size: 11px; letter-spacing: 0.1em; }
+
+/* ── SELECCIÓN DE TORNEO ── */
+.stage-screen.fluid .start-wrap { position: static; padding: 64px 16px 40px; gap: 18px; }
+.stage-screen.fluid .start-title { font-size: 32px; }
+.stage-screen.fluid .start-list { grid-template-columns: 1fr; max-height: none; gap: 14px; padding: 0; }
+.stage-screen.fluid .start-card { padding: 22px 22px; }
+.stage-screen.fluid .start-card-name { font-size: 26px; }
+.stage-screen.fluid .start-empty { padding: 36px 24px; font-size: 18px; }
+
+/* ── AJUSTES ── */
+.stage-screen.fluid .set-wrap { padding: 64px 14px 48px; }
+.stage-screen.fluid .set-title { font-size: 32px; margin-bottom: 24px; }
+.stage-screen.fluid .set-grid { grid-template-columns: 1fr; gap: 16px; }
+.stage-screen.fluid .set-section { padding: 22px 18px; }
+.stage-screen.fluid .set-section h2 { font-size: 22px; margin-bottom: 16px; }
+.stage-screen.fluid .chip { font-size: 15px; padding: 11px 16px; }
+.stage-screen.fluid .swatch { font-size: 15px; padding: 10px 16px 10px 12px; }
+.stage-screen.fluid .swatch-dot { width: 22px; height: 22px; }
+.stage-screen.fluid .set-preview { height: 120px; }
+
+/* ── CONFIGURAR TORNEO (editor) ── */
+.stage-screen.fluid .cfg-wrap { position: static; padding: 60px 12px 48px; }
+.stage-screen.fluid .cfg-title { font-size: 28px; margin-bottom: 16px; }
+.stage-screen.fluid .cfg-layout { flex-direction: column; gap: 18px; }
+.stage-screen.fluid .cfg-side { width: 100%; }
+.stage-screen.fluid .cfg-side-list { max-height: 180px; }
+.stage-screen.fluid .cfg-name-field input { font-size: 22px; }
+.stage-screen.fluid .cfg-table-head { display: none; }
+.stage-screen.fluid .cfg-rows { gap: 14px; }
+.stage-screen.fluid .cfg-row {
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+  padding: 14px;
+  border: 1px solid var(--gold-line);
+  border-radius: 12px;
+}
+.stage-screen.fluid .cfg-row.break { border-color: rgba(80, 160, 200, 0.4); }
+.stage-screen.fluid .cfg-row .c-idx { grid-column: 1 / -1; text-align: left; font-weight: 700; color: var(--gold); }
+.stage-screen.fluid .cfg-row .c-name { grid-column: 1 / -1; }
+.stage-screen.fluid .cfg-row .c-msg { grid-column: 1 / -1; }
+.stage-screen.fluid .cfg-row .c-act { grid-column: 1 / -1; justify-content: flex-start; gap: 10px; }
+.stage-screen.fluid .icon-btn { width: 38px; height: 38px; }
+.stage-screen.fluid .cfg-editor { padding: 20px 14px; }
+.stage-screen.fluid .cfg-editor-actions { flex-wrap: wrap; gap: 10px; }
+.stage-screen.fluid .cfg-editor-actions .btn { flex: 1 1 auto; }
+
+/* ── TIMER ── */
+.stage-screen.fluid .timer-topbar { height: auto; padding: 14px 12px 10px; }
+.stage-screen.fluid .timer-tname { font-size: 24px; text-align: center; line-height: 1.2; }
+.stage-screen.fluid .timer-tname span { display: block; font-size: 14px; margin: 0 0 4px; }
+.stage-screen.fluid .timer-center { width: 100%; padding: 0 12px; }
+.stage-screen.fluid .timer-level-label { font-size: 14px; margin-bottom: 10px; }
+.stage-screen.fluid .timer-ring { width: 260px; height: 260px; }
+.stage-screen.fluid .timer-display { font-size: 62px; }
+.stage-screen.fluid .timer-blinds-section { margin-top: 16px; }
+.stage-screen.fluid .timer-blinds-label { font-size: 13px; }
+.stage-screen.fluid .timer-blinds-value { font-size: 44px; }
+.stage-screen.fluid .timer-ante { font-size: 18px; }
+.stage-screen.fluid .timer-next { font-size: 13px; padding: 8px 18px; }
+.stage-screen.fluid .timer-bottombar { height: 54px; }
+.stage-screen.fluid .timer-brand { font-size: 12px; letter-spacing: 0.2em; text-align: center; padding: 0 12px; }
+.stage-screen.fluid .timer-banner { font-size: 22px; padding: 14px 24px; width: 88%; top: 96px; }
+.stage-screen.fluid .timer-overlay-text { font-size: 48px; }
+.stage-screen.fluid .timer-hint { display: none; }
+.stage-screen.fluid .cards-container .poker-card { width: 58px; height: 82px; }

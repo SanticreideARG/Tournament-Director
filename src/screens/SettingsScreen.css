@@ -51,6 +51,8 @@
   color: var(--fg-dim);
 }
 .set-field input { width: 160px; font-size: 22px; }
+.set-field-wide { margin-top: 24px; }
+.set-field-wide input { width: 100%; max-width: 520px; font-size: 20px; }
 
 .set-span { grid-column: 1 / -1; }
 .set-theme-group { margin-bottom: 24px; }

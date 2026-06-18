@@ -68,7 +68,11 @@
     "sound": "Sound",
     "soundOn": "On",
     "soundOff": "Muted",
-    "warnSeconds": "Warning before end (seconds)"
+    "warnSeconds": "Warning before end (seconds)",
+    "display": "Display",
+    "timerCards": "Animated cards on the timer",
+    "footer": "Footer text",
+    "footerPlaceholder": "PokerHouse · Tournament Director"
   },
   "common": { "back": "Back", "cancel": "Cancel", "confirm": "Confirm", "of": "of" }
 }

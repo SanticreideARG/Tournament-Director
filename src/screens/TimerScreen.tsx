@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import ScaledStage from '../components/ScaledStage';
+import FloatingCards from '../components/FloatingCards';
 import { useTimerStore } from '../store/useTimerStore';
 import { useSettingsStore } from '../store/useSettingsStore';
+import { useIsMobile } from '../lib/useIsMobile';
 import { formatClock, formatBlind } from '../lib/time';
 import { playWarning, playLevelChange, unlockAudio } from '../lib/audio';
 import './TimerScreen.css';
@@ -33,7 +35,8 @@ export default function TimerScreen() {
     togglePause, next, prev, markWarned, currentLevel, nextLevel, getRemaining,
   } = useTimerStore();
 
-  const { soundEnabled, warnSeconds, language } = useSettingsStore();
+  const { soundEnabled, warnSeconds, language, showTimerCards, footerText } = useSettingsStore();
+  const isMobile = useIsMobile();
 
   const [banner, setBanner] = useState<Banner | null>(null);
   const firstMount = useRef(true);
@@ -103,6 +106,9 @@ export default function TimerScreen() {
 
   return (
     <ScaledStage>
+      {/* Cartas decorativas opcionales (a los lados en desktop, arriba/abajo en mobile) */}
+      {showTimerCards && <FloatingCards layout={isMobile ? 'topbottom' : 'sides'} />}
+
       {/* Tinte de fondo por nivel */}
       <motion.div
         className="timer-tint"
@@ -174,7 +180,7 @@ export default function TimerScreen() {
 
       {/* Brand inferior */}
       <div className="timer-bottombar">
-        <div className="timer-brand">PokerHouse · Tournament Director</div>
+        <div className="timer-brand">{footerText}</div>
       </div>
 
       <div className="timer-hint">{t('timer.clickHint')}</div>

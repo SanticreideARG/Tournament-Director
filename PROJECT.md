@@ -156,6 +156,12 @@ round-trip verificado).
       (oscuros) e ivory/platinum/champagne (claros). Selector con swatches en Ajustes.
 - [x] **Fondos animados** (`src/components/backgrounds/`): shader, fireflies, snow, starfield,
       aurora (toma colores del tema), bokeh, none, imagen propia. Despacho en `AppBackground`.
+- [x] **Responsive / mobile**: `ScaledStage` es dual — lienzo 1920×1080 escalado en desktop y
+      layout FLUIDO en mobile (`useIsMobile`, breakpoint 820px, clase `.stage-screen.fluid`).
+      Overrides mobile centralizados en `src/styles/mobile.css`.
+- [x] **Cartas animadas en el timer** (toggle `showTimerCards` en Ajustes): a los lados en
+      desktop, arriba/abajo en mobile (`FloatingCards` con prop `layout` y posiciones en %).
+- [x] **Pie de página editable** (`footerText` en Ajustes) mostrado en el timer.
 
 ---
 

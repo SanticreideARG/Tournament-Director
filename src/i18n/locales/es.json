@@ -68,7 +68,11 @@
     "sound": "Sonido",
     "soundOn": "Activado",
     "soundOff": "Silenciado",
-    "warnSeconds": "Aviso antes del fin (segundos)"
+    "warnSeconds": "Aviso antes del fin (segundos)",
+    "display": "Pantalla",
+    "timerCards": "Cartas animadas en el timer",
+    "footer": "Pie de página",
+    "footerPlaceholder": "PokerHouse · Tournament Director"
   },
   "common": { "back": "Volver", "cancel": "Cancelar", "confirm": "Confirmar", "of": "de" }
 }
