@@ -1,0 +1,72 @@
+{
+  "brand": { "tagline": "Tournament Director" },
+  "menu": {
+    "start": "Comenzar Torneo",
+    "startSub": "Iniciar el reloj y mostrar pantalla",
+    "configure": "Configurar Torneo",
+    "configureSub": "Niveles, ciegas y mensajes",
+    "settings": "Configurar Aplicación",
+    "settingsSub": "Pantalla, sonidos e idioma",
+    "noTournament": "No hay torneos guardados. Creá uno primero.",
+    "selectTournament": "Elegí un torneo"
+  },
+  "timer": {
+    "level": "Nivel",
+    "break": "Break",
+    "blinds": "Ciegas",
+    "ante": "Ante",
+    "nextLevel": "Siguiente",
+    "paused": "En pausa",
+    "finished": "Torneo finalizado",
+    "clickHint": "Espacio: pausar · ← →: cambiar nivel · Esc: salir",
+    "noLevels": "Este torneo no tiene niveles."
+  },
+  "config": {
+    "title": "Configurar Torneo",
+    "tournamentName": "Nombre del torneo",
+    "newTournament": "Nuevo torneo",
+    "importCsv": "Importar CSV",
+    "exportCsv": "Exportar CSV",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "duplicate": "Duplicar",
+    "savedTournaments": "Torneos guardados",
+    "addLevel": "Agregar nivel",
+    "addBreak": "Agregar break",
+    "level": "Nivel",
+    "time": "Tiempo",
+    "smallBlind": "Ciega chica",
+    "bigBlind": "Ciega grande",
+    "ante": "Ante",
+    "startMessage": "Mensaje de inicio",
+    "endMessage": "Mensaje de fin",
+    "actions": "Acciones",
+    "empty": "Todavía no hay niveles. Agregá uno o importá un CSV.",
+    "confirmDelete": "¿Eliminar este torneo?",
+    "saved": "Torneo guardado",
+    "importError": "No se pudo leer el CSV. Revisá el formato."
+  },
+  "settings": {
+    "title": "Configurar Aplicación",
+    "theme": "Tema",
+    "themesDark": "Oscuros",
+    "themesLight": "Claros",
+    "language": "Idioma",
+    "wallpaper": "Fondo de pantalla",
+    "chooseImage": "Imagen propia",
+    "bg": {
+      "shader": "Agua",
+      "fireflies": "Luciérnagas",
+      "snow": "Nieve",
+      "starfield": "Cielo estrellado",
+      "aurora": "Aurora",
+      "bokeh": "Bokeh dorado",
+      "none": "Color sólido"
+    },
+    "sound": "Sonido",
+    "soundOn": "Activado",
+    "soundOff": "Silenciado",
+    "warnSeconds": "Aviso antes del fin (segundos)"
+  },
+  "common": { "back": "Volver", "cancel": "Cancelar", "confirm": "Confirmar", "of": "de" }
+}

@@ -1,0 +1,81 @@
+/* Contenedor común de fondos no-canvas */
+.bg-fx { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+
+/* ─── FIREFLIES ─────────────────────────────────────────── */
+.firefly {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 0.4vw;
+  height: 0.4vw;
+  margin: -0.2vw 0 0 9.8vw;
+  animation: 200s ease alternate infinite;
+  pointer-events: none;
+}
+.firefly::before,
+.firefly::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform-origin: -10vw;
+}
+.firefly::before {
+  background: black;
+  opacity: 0.4;
+  animation: ff-drift ease alternate infinite;
+}
+.firefly::after {
+  background: white;
+  opacity: 0;
+  box-shadow: 0 0 0vw 0vw var(--ff-glow, #ffd54a);
+  animation: ff-drift ease alternate infinite, ff-flash ease infinite;
+}
+@keyframes ff-drift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes ff-flash {
+  0%, 30%, 100% { opacity: 0; box-shadow: 0 0 0vw 0vw var(--ff-glow, #ffd54a); }
+  5% { opacity: 1; box-shadow: 0 0 2vw 0.4vw var(--ff-glow, #ffd54a); }
+}
+
+/* ─── AURORA ─────────────────────────────────────────── */
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+:root[data-theme='ivory'] .aurora-blob,
+:root[data-theme='platinum'] .aurora-blob,
+:root[data-theme='champagne'] .aurora-blob {
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+}
+.aurora-1 { width: 55vw; height: 55vw; left: -10vw; top: -15vw; background: var(--aurora-1); animation: aurora-a 26s ease-in-out infinite; }
+.aurora-2 { width: 50vw; height: 50vw; right: -12vw; top: 5vw; background: var(--aurora-2); animation: aurora-b 32s ease-in-out infinite; }
+.aurora-3 { width: 60vw; height: 60vw; left: 15vw; bottom: -25vw; background: var(--aurora-3); animation: aurora-c 38s ease-in-out infinite; }
+@keyframes aurora-a { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(20vw, 12vh) scale(1.25); } }
+@keyframes aurora-b { 0%, 100% { transform: translate(0, 0) scale(1.1); } 50% { transform: translate(-18vw, 16vh) scale(0.85); } }
+@keyframes aurora-c { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-12vw, -18vh) scale(1.2); } }
+
+/* ─── BOKEH (orbes dorados) ─────────────────────────────────────────── */
+.bokeh-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 230, 150, 0.9), rgba(240, 180, 60, 0.35) 45%, transparent 70%);
+  filter: blur(2px);
+  opacity: 0;
+  animation: bokeh-float linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes bokeh-float {
+  0% { transform: translateY(20vh) scale(0.8); opacity: 0; }
+  10% { opacity: 0.9; }
+  90% { opacity: 0.9; }
+  100% { transform: translateY(-110vh) scale(1.1); opacity: 0; }
+}

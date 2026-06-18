@@ -1,0 +1,72 @@
+{
+  "brand": { "tagline": "Tournament Director" },
+  "menu": {
+    "start": "Iniciar Torneio",
+    "startSub": "Iniciar o relógio e mostrar a tela",
+    "configure": "Configurar Torneio",
+    "configureSub": "Níveis, blinds e mensagens",
+    "settings": "Configurar Aplicativo",
+    "settingsSub": "Tela, sons e idioma",
+    "noTournament": "Nenhum torneio salvo. Crie um primeiro.",
+    "selectTournament": "Escolha um torneio"
+  },
+  "timer": {
+    "level": "Nível",
+    "break": "Intervalo",
+    "blinds": "Blinds",
+    "ante": "Ante",
+    "nextLevel": "Próximo",
+    "paused": "Pausado",
+    "finished": "Torneio finalizado",
+    "clickHint": "Espaço: pausar · ← →: mudar nível · Esc: sair",
+    "noLevels": "Este torneio não tem níveis."
+  },
+  "config": {
+    "title": "Configurar Torneio",
+    "tournamentName": "Nome do torneio",
+    "newTournament": "Novo torneio",
+    "importCsv": "Importar CSV",
+    "exportCsv": "Exportar CSV",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "duplicate": "Duplicar",
+    "savedTournaments": "Torneios salvos",
+    "addLevel": "Adicionar nível",
+    "addBreak": "Adicionar intervalo",
+    "level": "Nível",
+    "time": "Tempo",
+    "smallBlind": "Small blind",
+    "bigBlind": "Big blind",
+    "ante": "Ante",
+    "startMessage": "Mensagem de início",
+    "endMessage": "Mensagem de fim",
+    "actions": "Ações",
+    "empty": "Ainda não há níveis. Adicione um ou importe um CSV.",
+    "confirmDelete": "Excluir este torneio?",
+    "saved": "Torneio salvo",
+    "importError": "Não foi possível ler o CSV. Verifique o formato."
+  },
+  "settings": {
+    "title": "Configurar Aplicativo",
+    "theme": "Tema",
+    "themesDark": "Escuros",
+    "themesLight": "Claros",
+    "language": "Idioma",
+    "wallpaper": "Papel de parede",
+    "chooseImage": "Imagem própria",
+    "bg": {
+      "shader": "Água",
+      "fireflies": "Vaga-lumes",
+      "snow": "Neve",
+      "starfield": "Céu estrelado",
+      "aurora": "Aurora",
+      "bokeh": "Bokeh dourado",
+      "none": "Cor sólida"
+    },
+    "sound": "Som",
+    "soundOn": "Ligado",
+    "soundOff": "Mudo",
+    "warnSeconds": "Aviso antes do fim (segundos)"
+  },
+  "common": { "back": "Voltar", "cancel": "Cancelar", "confirm": "Confirmar", "of": "de" }
+}

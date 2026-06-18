@@ -1,0 +1,72 @@
+{
+  "brand": { "tagline": "Tournament Director" },
+  "menu": {
+    "start": "Start Tournament",
+    "startSub": "Launch the clock and show the screen",
+    "configure": "Configure Tournament",
+    "configureSub": "Levels, blinds and messages",
+    "settings": "App Settings",
+    "settingsSub": "Display, sounds and language",
+    "noTournament": "No saved tournaments. Create one first.",
+    "selectTournament": "Pick a tournament"
+  },
+  "timer": {
+    "level": "Level",
+    "break": "Break",
+    "blinds": "Blinds",
+    "ante": "Ante",
+    "nextLevel": "Next",
+    "paused": "Paused",
+    "finished": "Tournament finished",
+    "clickHint": "Space: pause · ← →: change level · Esc: exit",
+    "noLevels": "This tournament has no levels."
+  },
+  "config": {
+    "title": "Configure Tournament",
+    "tournamentName": "Tournament name",
+    "newTournament": "New tournament",
+    "importCsv": "Import CSV",
+    "exportCsv": "Export CSV",
+    "save": "Save",
+    "delete": "Delete",
+    "duplicate": "Duplicate",
+    "savedTournaments": "Saved tournaments",
+    "addLevel": "Add level",
+    "addBreak": "Add break",
+    "level": "Level",
+    "time": "Time",
+    "smallBlind": "Small blind",
+    "bigBlind": "Big blind",
+    "ante": "Ante",
+    "startMessage": "Start message",
+    "endMessage": "End message",
+    "actions": "Actions",
+    "empty": "No levels yet. Add one or import a CSV.",
+    "confirmDelete": "Delete this tournament?",
+    "saved": "Tournament saved",
+    "importError": "Could not read the CSV. Check the format."
+  },
+  "settings": {
+    "title": "App Settings",
+    "theme": "Theme",
+    "themesDark": "Dark",
+    "themesLight": "Light",
+    "language": "Language",
+    "wallpaper": "Wallpaper",
+    "chooseImage": "Custom image",
+    "bg": {
+      "shader": "Water",
+      "fireflies": "Fireflies",
+      "snow": "Snow",
+      "starfield": "Starfield",
+      "aurora": "Aurora",
+      "bokeh": "Golden bokeh",
+      "none": "Solid color"
+    },
+    "sound": "Sound",
+    "soundOn": "On",
+    "soundOff": "Muted",
+    "warnSeconds": "Warning before end (seconds)"
+  },
+  "common": { "back": "Back", "cancel": "Cancel", "confirm": "Confirm", "of": "of" }
+}
