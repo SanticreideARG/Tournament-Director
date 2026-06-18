@@ -167,21 +167,32 @@ round-trip verificado).
 
 ## 6. Hoja de ruta
 
-### Fase 2
-3. **Autenticación Google (OAuth) + Supabase** — guardar torneos en el perfil del usuario.
-   Login ya bocetado (`Login.html`). Cliente: `@supabase/supabase-js`; Supabase Auth trae el
-   provider de Google. Migrar persistencia de localStorage → sincronización con la nube
-   (offline-first: localStorage como caché).
-4. **Empaquetado Electron portable** — ejecutable offline para la pantalla del torneo
-   (mismo enfoque que el proyecto Grimorio del usuario). HashRouter ya lo facilita.
+### Próximo — web (V1.x), priorizado por el usuario
+1. **Controles táctiles + barra de control del director** — botones en pantalla para
+   pausar/reanudar y avanzar/retroceder nivel (hoy en mobile dependen del teclado, que está
+   oculto). Visible al menos en mobile; opcional/auto-hide en desktop.
+2. **PWA instalable + offline** — manifest + service worker (p. ej. `vite-plugin-pwa`) para
+   instalar la web como app y que funcione sin conexión. Paso previo útil al Electron 2.0.
+3. **Marca personalizable** — subir el logo del club/torneo (a localStorage/dataURL) y mostrarlo
+   en el timer junto al nombre.
+4. **Reloj + hora estimada de fin + chip color-up** — hora actual, fin proyectado del torneo
+   (suma de duraciones restantes) y aviso de retirar/cambiar fichas por nivel.
 
-### Backlog / ideas futuras
-- Paneles laterales de **jugadores y mesas restantes** con control en vivo (botones +/–);
-  estaban en los bocetos pero quedaron fuera de la V1 por decisión del usuario.
-- Cálculo automático de estructura de blinds (generador inteligente por buy-in/duración).
-- Reloj de descanso/“color-up” de fichas, payouts y premios.
+### Fase Supabase/OAuth (docs listas en `docs/`)
+- **Autenticación Google (OAuth) + Supabase** — guardar torneos en el perfil del usuario,
+  offline-first. Manual del usuario y plan para agente en `docs/SUPABASE_OAUTH_*`. Arrancar
+  cuando el usuario complete el setup de la nube.
+
+### V2.0
+- **Empaquetado Electron portable** — ejecutable offline para la pantalla del torneo
+  (mismo enfoque que el proyecto Grimorio). HashRouter ya lo facilita. Ver gotcha de OAuth en
+  Electron en `docs/SUPABASE_OAUTH_PLAN.md`.
+- **Jugadores y mesas en vivo** — paneles de jugadores/mesas restantes, rebuys, eliminaciones,
+  stack promedio y balanceo de mesas (estaban en los bocetos).
+- **Generador automático de estructura de blinds** — por buy-in, stack inicial, jugadores y
+  duración objetivo.
+- **Premios / Payouts** — pozo de premios y estructura de pagos por puesto.
 - Pantalla secundaria / modo multi-viewport.
-- Carga de logo del club/torneo y branding personalizable.
 
 ---
 
