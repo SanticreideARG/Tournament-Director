@@ -3,6 +3,8 @@
   "menu": {
     "start": "Start Tournament",
     "startSub": "Launch the clock and show the screen",
+    "resume": "Resume Tournament",
+    "resumeSub": "Continue the tournament in progress",
     "configure": "Configure Tournament",
     "configureSub": "Levels, blinds and messages",
     "settings": "App Settings",

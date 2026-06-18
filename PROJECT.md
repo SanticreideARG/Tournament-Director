@@ -117,7 +117,8 @@ round-trip verificado).
 ### Claves de `localStorage`
 - `td-settings` — ajustes de la app.
 - `td-tournaments` — lista de torneos.
-- (El estado runtime del timer NO se persiste a propósito.)
+- `td-timer` — estado del reloj en curso (torneo activo, nivel, `levelEndsAt`,
+  `pausedRemaining`, running/finished). Permite reanudar tras navegar o recargar.
 
 ---
 
@@ -131,8 +132,12 @@ round-trip verificado).
   distinto por nivel** (HSL en función del índice; azul para breaks).
 - **Atajos:** `Espacio` pausa/reanuda · `← →` cambia de nivel · `Esc` vuelve al menú.
   Click en el overlay también pausa/reanuda.
-- Bucle de tiempo con `requestAnimationFrame` y delta real (no se desfasa si la pestaña
-  pierde foco brevemente).
+- **Persistencia / reanudación:** el reloj es **basado en timestamp** (`levelEndsAt`),
+  no un contador que decrementa. El estado se persiste en `localStorage` (`td-timer`).
+  Mientras la app está abierta sigue corriendo en **tiempo real** aunque salgas a menú/opciones
+  (un intervalo global avanza de nivel); al **recargar o reabrir** retoma **en pausa** donde
+  quedó. El menú muestra **"Reanudar Torneo"** si hay uno en curso. `TimerScreen` solo deriva
+  los segundos del timestamp para mostrarlos (no gobierna el tiempo).
 
 ---
 
@@ -198,5 +203,6 @@ round-trip verificado).
 - El parser de CSV es la pieza más delicada: cualquier cambio debe mantener el round-trip
   import → export → import (ver test manual en el historial: mensajes con comas, breaks sin
   blinds, ante opcional).
-- El estado del timer es efímero por diseño; si se quiere "reanudar torneo" tras recargar,
-  habría que persistir `useTimerStore` (decisión pendiente).
+- El estado del timer se persiste (`td-timer`) y es **basado en timestamp**; ver §4. Si se
+  cambia la lógica del reloj, mantener: tiempo real mientras la app está abierta, y reanudar
+  en pausa tras un arranque en frío.

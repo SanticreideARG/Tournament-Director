@@ -3,6 +3,8 @@
   "menu": {
     "start": "Comenzar Torneo",
     "startSub": "Iniciar el reloj y mostrar pantalla",
+    "resume": "Reanudar Torneo",
+    "resumeSub": "Continuar el torneo en curso",
     "configure": "Configurar Torneo",
     "configureSub": "Niveles, ciegas y mensajes",
     "settings": "Configurar Aplicación",

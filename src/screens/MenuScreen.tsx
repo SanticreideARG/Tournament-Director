@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next';
 import ScaledStage from '../components/ScaledStage';
 import FloatingCards from '../components/FloatingCards';
 import { unlockAudio } from '../lib/audio';
+import { useTimerStore } from '../store/useTimerStore';
 import './MenuScreen.css';
 
 export default function MenuScreen() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const hasActive = useTimerStore((s) => !!s.tournament && !s.finished);
 
   const go = (path: string) => {
     unlockAudio();
@@ -28,7 +30,22 @@ export default function MenuScreen() {
       </div>
 
       <div className="menu-list">
-        <button className="menu-item primary" onClick={() => go('/start')}>
+        {hasActive && (
+          <button className="menu-item primary" onClick={() => go('/timer')}>
+            <span className="menu-icon">
+              <svg viewBox="0 0 32 32">
+                <path d="M11 8l13 8-13 8z" />
+              </svg>
+            </span>
+            <span className="menu-text">
+              <span className="menu-title">{t('menu.resume')}</span>
+              <span className="menu-sub">{t('menu.resumeSub')}</span>
+            </span>
+            <span className="menu-arrow">›</span>
+          </button>
+        )}
+
+        <button className={`menu-item ${hasActive ? '' : 'primary'}`} onClick={() => go('/start')}>
           <span className="menu-icon">
             <svg viewBox="0 0 32 32">
               <circle cx="16" cy="17" r="11" />

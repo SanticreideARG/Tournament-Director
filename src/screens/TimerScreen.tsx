@@ -29,8 +29,8 @@ export default function TimerScreen() {
   const { t } = useTranslation();
 
   const {
-    tournament, currentIndex, remaining, running, finished, warned,
-    tick, togglePause, next, prev, markWarned, currentLevel, nextLevel,
+    tournament, currentIndex, running, finished, warned,
+    togglePause, next, prev, markWarned, currentLevel, nextLevel, getRemaining,
   } = useTimerStore();
 
   const { soundEnabled, warnSeconds, language } = useSettingsStore();
@@ -38,25 +38,18 @@ export default function TimerScreen() {
   const [banner, setBanner] = useState<Banner | null>(null);
   const firstMount = useRef(true);
   const bannerTimer = useRef<number | undefined>(undefined);
+  const [, forceTick] = useState(0);
 
   // Sin torneo cargado: volver al inicio.
   useEffect(() => {
     if (!tournament) navigate('/');
   }, [tournament, navigate]);
 
-  // Bucle de tiempo real.
+  // Ticker local: re-renderiza para reflejar el tiempo derivado del timestamp.
   useEffect(() => {
-    let raf = 0;
-    let last = performance.now();
-    const loop = (now: number) => {
-      const delta = (now - last) / 1000;
-      last = now;
-      tick(delta);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [tick]);
+    const id = window.setInterval(() => forceTick((n) => n + 1), 200);
+    return () => window.clearInterval(id);
+  }, []);
 
   // Cambio de nivel: sonido + mensaje de inicio.
   useEffect(() => {
@@ -68,15 +61,19 @@ export default function TimerScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
+  const remaining = getRemaining();
+  const lowZone = running && !finished && remaining > 0 && remaining <= warnSeconds;
+
   // Aviso de fin de nivel (10s antes por defecto).
   useEffect(() => {
-    if (running && !warned && !finished && remaining > 0 && remaining <= warnSeconds) {
+    if (lowZone && !warned) {
       if (soundEnabled) playWarning();
       markWarned();
       const lvl = useTimerStore.getState().currentLevel();
       if (lvl?.endMessage) showBanner({ text: lvl.endMessage, kind: 'end' });
     }
-  }, [remaining, running, warned, finished, warnSeconds, soundEnabled, markWarned]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lowZone, warned]);
 
   // Atajos de teclado.
   useEffect(() => {
@@ -103,7 +100,6 @@ export default function TimerScreen() {
   const total = lvl?.durationSeconds || 1;
   const pct = Math.max(0, Math.min(1, remaining / total));
   const ringColor = pct < 0.15 ? '#e03020' : pct < 0.3 ? '#e08020' : 'url(#timerGrad)';
-  const lowTime = remaining <= warnSeconds && remaining > 0 && running;
 
   return (
     <ScaledStage>
@@ -148,7 +144,7 @@ export default function TimerScreen() {
               }}
             />
           </svg>
-          <div className={`timer-display ${lowTime ? 'low' : ''}`}>{formatClock(remaining)}</div>
+          <div className={`timer-display ${lowZone ? 'low' : ''}`}>{formatClock(Math.ceil(remaining))}</div>
         </div>
 
         {lvl && !lvl.isBreak && (
