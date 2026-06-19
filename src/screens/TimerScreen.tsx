@@ -7,7 +7,7 @@ import FloatingCards from '../components/FloatingCards';
 import { useTimerStore } from '../store/useTimerStore';
 import { useSettingsStore } from '../store/useSettingsStore';
 import { useIsMobile } from '../lib/useIsMobile';
-import { formatClock, formatBlind } from '../lib/time';
+import { formatClock, formatBlind, formatTimeOfDay } from '../lib/time';
 import { playWarning, playLevelChange, unlockAudio } from '../lib/audio';
 import './TimerScreen.css';
 
@@ -35,7 +35,7 @@ export default function TimerScreen() {
     togglePause, next, prev, markWarned, currentLevel, nextLevel, getRemaining,
   } = useTimerStore();
 
-  const { soundEnabled, warnSeconds, language, showTimerCards, footerText } = useSettingsStore();
+  const { soundEnabled, warnSeconds, language, showTimerCards, showClock, footerText } = useSettingsStore();
   const isMobile = useIsMobile();
 
   const [banner, setBanner] = useState<Banner | null>(null);
@@ -124,6 +124,14 @@ export default function TimerScreen() {
   const pct = Math.max(0, Math.min(1, remaining / total));
   const ringColor = pct < 0.15 ? '#e03020' : pct < 0.3 ? '#e08020' : 'url(#timerGrad)';
 
+  // Hora actual y hora estimada de fin (nivel actual + duración de los niveles restantes).
+  const nowStr = formatTimeOfDay(Date.now(), language);
+  let restSeconds = remaining;
+  for (let i = currentIndex + 1; i < tournament.levels.length; i++) {
+    restSeconds += tournament.levels[i].durationSeconds;
+  }
+  const etaStr = formatTimeOfDay(Date.now() + restSeconds * 1000, language);
+
   return (
     <ScaledStage>
       {/* Cartas decorativas opcionales (a los lados en desktop, arriba/abajo en mobile) */}
@@ -143,6 +151,20 @@ export default function TimerScreen() {
           {tournament.name}
         </div>
       </div>
+
+      {/* Reloj: hora actual y hora estimada de fin */}
+      {showClock && !finished && (
+        <>
+          <div className="timer-info timer-clock">
+            <span className="tinfo-label">{t('timer.now')}</span>
+            <span className="tinfo-value">{nowStr}</span>
+          </div>
+          <div className="timer-info timer-eta">
+            <span className="tinfo-label">{t('timer.estEnd')}</span>
+            <span className="tinfo-value">~ {etaStr}</span>
+          </div>
+        </>
+      )}
 
       {/* Centro */}
       <div className="timer-center">

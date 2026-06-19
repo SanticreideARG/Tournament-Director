@@ -34,6 +34,36 @@
   font-weight: 400;
 }
 
+/* ── HORA ACTUAL / FIN ESTIMADO ── */
+.timer-info {
+  position: absolute;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 22px;
+  background: var(--panel);
+  border: 1px solid var(--gold-line);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+.timer-clock { left: 60px; text-align: left; }
+.timer-eta { right: 60px; text-align: right; }
+.tinfo-label {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+.tinfo-value {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1;
+}
+
 .timer-center {
   position: absolute;
   top: 50%; left: 50%;

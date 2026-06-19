@@ -11,6 +11,7 @@ interface SettingsState {
   soundEnabled: boolean;
   warnSeconds: number;
   showTimerCards: boolean;
+  showClock: boolean;
   footerText: string;
   setTheme: (t: ThemeName) => void;
   setLanguage: (l: LanguageCode) => void;
@@ -18,6 +19,7 @@ interface SettingsState {
   setSoundEnabled: (v: boolean) => void;
   setWarnSeconds: (n: number) => void;
   setShowTimerCards: (v: boolean) => void;
+  setShowClock: (v: boolean) => void;
   setFooterText: (t: string) => void;
 }
 
@@ -32,6 +34,7 @@ export const useSettingsStore = create<SettingsState>()(
       soundEnabled: true,
       warnSeconds: 10,
       showTimerCards: false,
+      showClock: true,
       footerText: DEFAULT_FOOTER,
       setTheme: (theme) => set({ theme }),
       setLanguage: (language) => {
@@ -42,6 +45,7 @@ export const useSettingsStore = create<SettingsState>()(
       setSoundEnabled: (soundEnabled) => set({ soundEnabled }),
       setWarnSeconds: (warnSeconds) => set({ warnSeconds: Math.max(0, warnSeconds) }),
       setShowTimerCards: (showTimerCards) => set({ showTimerCards }),
+      setShowClock: (showClock) => set({ showClock }),
       setFooterText: (footerText) => set({ footerText }),
     }),
     {

@@ -168,15 +168,15 @@ round-trip verificado).
 ## 6. Hoja de ruta
 
 ### Próximo — web (V1.x), priorizado por el usuario
-1. **Controles táctiles + barra de control del director** — botones en pantalla para
-   pausar/reanudar y avanzar/retroceder nivel (hoy en mobile dependen del teclado, que está
-   oculto). Visible al menos en mobile; opcional/auto-hide en desktop.
+1. [x] **Controles táctiles + barra de control del director** — botones (anterior/pausa-play/
+   siguiente/salir) en `TimerScreen`; siempre visible en mobile, auto-oculta en desktop.
 2. **PWA instalable + offline** — manifest + service worker (p. ej. `vite-plugin-pwa`) para
    instalar la web como app y que funcione sin conexión. Paso previo útil al Electron 2.0.
 3. **Marca personalizable** — subir el logo del club/torneo (a localStorage/dataURL) y mostrarlo
    en el timer junto al nombre.
-4. **Reloj + hora estimada de fin + chip color-up** — hora actual, fin proyectado del torneo
-   (suma de duraciones restantes) y aviso de retirar/cambiar fichas por nivel.
+4. **Reloj + hora estimada de fin** — [x] hora actual + fin proyectado (suma de duraciones
+   restantes), con toggle `showClock` en Ajustes. Pendiente: **chip color-up** (aviso de
+   retirar/cambiar fichas por nivel).
 
 ### Fase Supabase/OAuth (docs listas en `docs/`)
 - **Autenticación Google (OAuth) + Supabase** — guardar torneos en el perfil del usuario,

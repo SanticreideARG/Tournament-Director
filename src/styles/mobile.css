@@ -115,6 +115,11 @@
 .stage-screen.fluid .timer-overlay-text { font-size: 48px; }
 .stage-screen.fluid .timer-hint { display: none; }
 .stage-screen.fluid .cards-container .poker-card { width: 58px; height: 82px; }
+.stage-screen.fluid .timer-info { top: auto; bottom: 144px; padding: 8px 14px; border-radius: 10px; }
+.stage-screen.fluid .timer-clock { left: 12px; }
+.stage-screen.fluid .timer-eta { right: 12px; }
+.stage-screen.fluid .tinfo-label { font-size: 10px; letter-spacing: 0.12em; }
+.stage-screen.fluid .tinfo-value { font-size: 22px; }
 .stage-screen.fluid .timer-controls { bottom: 72px; gap: 12px; padding: 10px 14px; }
 .stage-screen.fluid .tc-btn { width: 56px; height: 56px; }
 .stage-screen.fluid .tc-btn svg { width: 24px; height: 24px; }

@@ -20,6 +20,8 @@
     "nextLevel": "Next",
     "prevLevel": "Previous level",
     "playPause": "Pause / Resume",
+    "now": "Time",
+    "estEnd": "Est. end",
     "paused": "Paused",
     "finished": "Tournament finished",
     "clickHint": "Space: pause · ← →: change level · Esc: exit",
@@ -73,6 +75,7 @@
     "warnSeconds": "Warning before end (seconds)",
     "display": "Display",
     "timerCards": "Animated cards on the timer",
+    "clock": "Clock & estimated end",
     "footer": "Footer text",
     "footerPlaceholder": "PokerHouse · Tournament Director"
   },

@@ -28,6 +28,12 @@ export function formatDuration(totalSeconds: number): string {
   return `${pad(h)}:${pad(m)}:${pad(sec)}`;
 }
 
+/** Formatea una marca temporal (epoch ms) como hora del día "HH:MM" (24h) según locale. */
+export function formatTimeOfDay(ms: number, locale = 'es'): string {
+  const loc = locale === 'en' ? 'en-US' : locale === 'pt' ? 'pt-BR' : 'es-AR';
+  return new Date(ms).toLocaleTimeString(loc, { hour: '2-digit', minute: '2-digit', hour12: false });
+}
+
 /** Formatea blinds con separador de miles segun locale */
 export function formatBlind(value: number | null, locale = 'es'): string {
   if (value == null) return '—';

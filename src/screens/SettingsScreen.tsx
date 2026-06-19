@@ -18,9 +18,9 @@ export default function SettingsScreen() {
   const { t } = useTranslation();
   const fileRef = useRef<HTMLInputElement>(null);
   const {
-    theme, language, wallpaper, soundEnabled, warnSeconds, showTimerCards, footerText,
+    theme, language, wallpaper, soundEnabled, warnSeconds, showTimerCards, showClock, footerText,
     setTheme, setLanguage, setWallpaper, setSoundEnabled, setWarnSeconds,
-    setShowTimerCards, setFooterText,
+    setShowTimerCards, setShowClock, setFooterText,
   } = useSettingsStore();
 
   const darkThemes = THEMES.filter((th) => th.mode === 'dark');
@@ -107,6 +107,17 @@ export default function SettingsScreen() {
                   {t('settings.soundOn')}
                 </button>
                 <button className={`chip ${!showTimerCards ? 'on' : ''}`} onClick={() => setShowTimerCards(false)}>
+                  {t('settings.soundOff')}
+                </button>
+              </div>
+            </div>
+            <div className="set-theme-group">
+              <span className="set-group-label">{t('settings.clock')}</span>
+              <div className="set-options">
+                <button className={`chip ${showClock ? 'on' : ''}`} onClick={() => setShowClock(true)}>
+                  {t('settings.soundOn')}
+                </button>
+                <button className={`chip ${!showClock ? 'on' : ''}`} onClick={() => setShowClock(false)}>
                   {t('settings.soundOff')}
                 </button>
               </div>
