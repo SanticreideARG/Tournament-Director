@@ -91,6 +91,22 @@
 .stage-screen.fluid .cfg-row .c-name { grid-column: 1 / -1; }
 .stage-screen.fluid .cfg-row .c-msg { grid-column: 1 / -1; }
 .stage-screen.fluid .cfg-row .c-act { grid-column: 1 / -1; justify-content: flex-start; gap: 10px; }
+/* Etiqueta tenue como sufijo dentro de los campos (la cabecera está oculta en mobile) */
+.stage-screen.fluid .cfg-field { display: block; }
+.stage-screen.fluid .cfg-field input { padding-right: 56px; }
+.stage-screen.fluid .cfg-field::after {
+  content: attr(data-suffix);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  opacity: 0.65;
+  pointer-events: none;
+}
 .stage-screen.fluid .icon-btn { width: 38px; height: 38px; }
 .stage-screen.fluid .cfg-editor { padding: 20px 14px; }
 .stage-screen.fluid .cfg-editor-actions { flex-wrap: wrap; gap: 10px; }

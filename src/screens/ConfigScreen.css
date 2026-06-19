@@ -44,6 +44,8 @@
 .cfg-row { padding: 8px; border-radius: 10px; background: var(--panel); border: 1px solid transparent; }
 .cfg-row.break { background: linear-gradient(120deg, rgba(40, 90, 120, 0.25), var(--panel)); border-color: rgba(80, 160, 200, 0.3); }
 .cfg-row input { font-size: 15px; padding: 8px 10px; width: 100%; }
+.cfg-field { position: relative; display: block; margin: 0; }
+.cfg-field input { width: 100%; }
 .cfg-row input:disabled { opacity: 0.3; }
 .c-idx { text-align: center; color: var(--fg-dim); font-size: 16px; }
 .c-msg { display: flex; flex-direction: column; gap: 6px; }

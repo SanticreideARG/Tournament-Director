@@ -160,13 +160,21 @@ export default function ConfigScreen() {
                 <div key={l.id} className={`cfg-row ${l.isBreak ? 'break' : ''}`}>
                   <span className="c-idx">{i + 1}</span>
                   <input className="c-name" value={l.name} onChange={(e) => updateLevel(l.id, { name: e.target.value })} />
-                  <input className="c-time" value={timeTexts[l.id] ?? ''} onChange={(e) => setTime(l.id, e.target.value)} placeholder="00:20:00" />
-                  <input className="c-num" type="number" value={l.smallBlind ?? ''} disabled={l.isBreak}
-                    onChange={(e) => updateLevel(l.id, { smallBlind: e.target.value === '' ? null : Number(e.target.value) })} />
-                  <input className="c-num" type="number" value={l.bigBlind ?? ''} disabled={l.isBreak}
-                    onChange={(e) => updateLevel(l.id, { bigBlind: e.target.value === '' ? null : Number(e.target.value) })} />
-                  <input className="c-num" type="number" value={l.ante ?? ''} disabled={l.isBreak}
-                    onChange={(e) => updateLevel(l.id, { ante: e.target.value === '' ? null : Number(e.target.value) })} />
+                  <label className="c-time cfg-field" data-suffix={t('config.timeShort')}>
+                    <input value={timeTexts[l.id] ?? ''} onChange={(e) => setTime(l.id, e.target.value)} placeholder="00:20:00" />
+                  </label>
+                  <label className="c-num cfg-field" data-suffix={t('config.sbShort')}>
+                    <input type="number" value={l.smallBlind ?? ''} disabled={l.isBreak}
+                      onChange={(e) => updateLevel(l.id, { smallBlind: e.target.value === '' ? null : Number(e.target.value) })} />
+                  </label>
+                  <label className="c-num cfg-field" data-suffix={t('config.bbShort')}>
+                    <input type="number" value={l.bigBlind ?? ''} disabled={l.isBreak}
+                      onChange={(e) => updateLevel(l.id, { bigBlind: e.target.value === '' ? null : Number(e.target.value) })} />
+                  </label>
+                  <label className="c-num cfg-field" data-suffix={t('config.anteShort')}>
+                    <input type="number" value={l.ante ?? ''} disabled={l.isBreak}
+                      onChange={(e) => updateLevel(l.id, { ante: e.target.value === '' ? null : Number(e.target.value) })} />
+                  </label>
                   <div className="c-msg">
                     <input value={l.startMessage} placeholder={t('config.startMessage')} onChange={(e) => updateLevel(l.id, { startMessage: e.target.value })} />
                     <input value={l.endMessage} placeholder={t('config.endMessage')} onChange={(e) => updateLevel(l.id, { endMessage: e.target.value })} />
