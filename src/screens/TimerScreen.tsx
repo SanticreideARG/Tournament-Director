@@ -42,6 +42,7 @@ export default function TimerScreen() {
   const firstMount = useRef(true);
   const bannerTimer = useRef<number | undefined>(undefined);
   const [, forceTick] = useState(0);
+  const [controlsVisible, setControlsVisible] = useState(true);
 
   // Sin torneo cargado: volver al inicio.
   useEffect(() => {
@@ -77,6 +78,25 @@ export default function TimerScreen() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lowZone, warned]);
+
+  // Visibilidad de la barra de control: siempre en mobile; auto-oculta en desktop.
+  useEffect(() => {
+    if (isMobile) { setControlsVisible(true); return; }
+    let hideTimer: number | undefined;
+    const show = () => {
+      setControlsVisible(true);
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => setControlsVisible(false), 3500);
+    };
+    show();
+    window.addEventListener('pointermove', show);
+    window.addEventListener('keydown', show);
+    return () => {
+      window.clearTimeout(hideTimer);
+      window.removeEventListener('pointermove', show);
+      window.removeEventListener('keydown', show);
+    };
+  }, [isMobile]);
 
   // Atajos de teclado.
   useEffect(() => {
@@ -184,6 +204,28 @@ export default function TimerScreen() {
       </div>
 
       <div className="timer-hint">{t('timer.clickHint')}</div>
+
+      {/* Barra de control táctil */}
+      {!finished && (
+        <div className={`timer-controls ${controlsVisible ? 'visible' : 'hidden'}`}>
+          <button className="tc-btn" aria-label={t('timer.prevLevel')} onClick={() => { unlockAudio(); prev(); }}>
+            <svg viewBox="0 0 24 24"><path d="M18 5v14l-9-7zM7 5v14H5V5z" /></svg>
+          </button>
+          <button className="tc-btn main" aria-label={t('timer.playPause')} onClick={() => { unlockAudio(); togglePause(); }}>
+            {running ? (
+              <svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" /><rect x="14" y="5" width="4" height="14" /></svg>
+            ) : (
+              <svg viewBox="0 0 24 24"><path d="M7 5l13 7-13 7z" /></svg>
+            )}
+          </button>
+          <button className="tc-btn" aria-label={t('timer.nextLevel')} onClick={() => { unlockAudio(); next(); }}>
+            <svg viewBox="0 0 24 24"><path d="M6 5v14l9-7zM17 5h2v14h-2z" /></svg>
+          </button>
+          <button className="tc-btn exit" aria-label={t('common.back')} onClick={() => navigate('/')}>
+            <svg viewBox="0 0 24 24"><path d="M10 19l-7-7 7-7v4h8v6h-8z" /></svg>
+          </button>
+        </div>
+      )}
 
       {/* Mensaje de inicio/fin */}
       <AnimatePresence>

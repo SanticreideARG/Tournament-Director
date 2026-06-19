@@ -18,6 +18,8 @@
     "blinds": "Blinds",
     "ante": "Ante",
     "nextLevel": "Próximo",
+    "prevLevel": "Nível anterior",
+    "playPause": "Pausar / Retomar",
     "paused": "Pausado",
     "finished": "Torneio finalizado",
     "clickHint": "Espaço: pausar · ← →: mudar nível · Esc: sair",

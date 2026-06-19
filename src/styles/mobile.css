@@ -7,14 +7,25 @@
 .stage-screen.fluid {
   position: relative;
   width: 100%;
-  min-height: 100%;
-  height: auto;
+  height: 100%;            /* altura fija = contenedor scrolleable */
   transform: none !important;
   left: 0 !important;
   top: 0 !important;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Los wrappers de pantalla fluyen (no son scrollers propios): el único scroller es
+   .stage-screen.fluid. Por eso quitamos position:absolute/overflow internos. */
+.stage-screen.fluid .start-wrap,
+.stage-screen.fluid .set-wrap,
+.stage-screen.fluid .cfg-wrap {
+  position: static;
+  inset: auto;
+  height: auto;
+  overflow: visible;
+  padding-bottom: 48px;
 }
 
 /* Botón "Volver" común a varias pantallas */
@@ -104,3 +115,8 @@
 .stage-screen.fluid .timer-overlay-text { font-size: 48px; }
 .stage-screen.fluid .timer-hint { display: none; }
 .stage-screen.fluid .cards-container .poker-card { width: 58px; height: 82px; }
+.stage-screen.fluid .timer-controls { bottom: 72px; gap: 12px; padding: 10px 14px; }
+.stage-screen.fluid .tc-btn { width: 56px; height: 56px; }
+.stage-screen.fluid .tc-btn svg { width: 24px; height: 24px; }
+.stage-screen.fluid .tc-btn.main { width: 66px; height: 66px; }
+.stage-screen.fluid .tc-btn.main svg { width: 28px; height: 28px; }

@@ -106,6 +106,52 @@
 
 .timer-hint { position: absolute; bottom: 18px; right: 24px; font-size: 13px; color: var(--fg-dim); letter-spacing: 0.08em; z-index: 4; }
 
+/* ── BARRA DE CONTROL TÁCTIL ── */
+.timer-controls {
+  position: absolute;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 18px;
+  border-radius: 60px;
+  background: var(--panel-strong);
+  border: 1px solid var(--gold-line);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 12; /* por encima del overlay de pausa para seguir operable en pausa */
+  transition: opacity 0.4s, transform 0.4s;
+}
+.timer-controls.hidden { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(12px); }
+.timer-controls.visible { opacity: 1; }
+
+.tc-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  background: var(--panel);
+  color: var(--fg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.tc-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+.tc-btn:active { transform: scale(0.94); }
+.tc-btn svg { width: 26px; height: 26px; fill: var(--fg); }
+.tc-btn.main {
+  width: 78px;
+  height: 78px;
+  background: linear-gradient(140deg, rgba(240, 180, 60, 0.4), rgba(240, 180, 60, 0.12));
+  border-color: var(--gold);
+}
+.tc-btn.main svg { width: 32px; height: 32px; fill: var(--gold); }
+.tc-btn.exit svg { fill: var(--fg-dim); }
+
 .timer-banner {
   position: absolute;
   top: 150px; left: 50%;
